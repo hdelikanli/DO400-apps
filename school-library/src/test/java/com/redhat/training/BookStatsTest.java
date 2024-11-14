@@ -1,27 +1,16 @@
-package com.redhat.training;
+@Test
+public void checkingOutDecreasesNumberOfBookCopiesFromInventory()
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+	throws BookNotAvailableException {
+	// Given
+	inventory.add(new Book("book1"));
+	inventory.add(new Book("book1"));
 
-import com.redhat.training.books.Book;
+	// When
+	library.checkOut("someStudentId", "book1");
 
-import org.junit.jupiter.api.Test;
+	// Then
 
-public class BookStatsTest {
-
-    @Test
-    public void countingWordsOfEmptyBookReturnsZero() {
-        // Given
-        Book book = new Book("someISBN");
-
-        // When
-        double wordCount = BookStats.countWords(book);
-
-        // Then
-        assertEquals(0, wordCount);
-    }
-
-    @Test
-    public void countingWordsReturnsNumberOfWordsInBook() {
-        assertEquals(0, 1); // Replace this line with the actual test code...
-    }
+	assertEquals(1, inventory.countCopies("book1"));
 }
+
